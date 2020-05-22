@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>H5移动端小游戏之打怪</title>
+  <script>
+    // ------------------------------设定基准rem-------------------------------------------
+    (function() {
+      var screen_width = window.screen.width;
+      var font_size = (screen_width / 640) * 100;
+      document.documentElement.style.fontSize = font_size + 'px'; // 1rem的大小;
+      window.addEventListener('resize', function() {
+        var screen_width = window.screen.width;
+        var font_size = (screen_width / 640) * 100;
+        document.documentElement.style.fontSize = font_size + 'px'; // 1rem的大小;
+      })
+    })();
+    // ------------------------------ 阻止默认行为 ------------------------------
+    (function() {
+      var lastTouch = 0;
+      document.addEventListener('touchstart', { passive: false }, function(e) {
+        e.preventDefault();
+      });
+      document.addEventListener('touchend', function(e) {
+        var now = new Date().getTime();
+        if(now - lastTouch <= 300) {
+          e.preventDefault();
+        }
+        lastTouch = now;
+      }, false);
+      document.addEventListener('gesturestart', function(e) {
+        e.preventDefault();
+      })
+      document.addEventListener('dbclick', function(e) {
+        e.preventDefault();
+      })
+    })();
+  </script>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <section>
+    <div class="game-page-index">
+      <div class="game-bg">
+        <h2 class="game-bg-title">游戏背景</h2>
+        <p class="game-bg-intro">
+          银河参议会掀起一场骚动，数千个星球纷纷表达退出共和国的意图。分裂组织运动在神秘的杜库伯爵带领下, 逐渐脱离了绝地武士的掌握，银河的和平秩序面临回失控. 阿米达拉参议员, 前纳布星女王正赶往银河议会，为重大的议案投下一票, 决定是否建立共和国军, 协助寡不敌众的绝地武士……
+        </p>
+      </div>
+      <div class="game-start">
+        <div class="game-start-bg"></div>
+        <div class="game-start-btn">
+          开始游戏
+        </div>
+        <p class="game-start-text">
+          现在进入<em>星际打怪</em>游戏
+        </p>
+      </div>
+      <div class="iconfont slide-up-arrow">&#xe608;</div>
+      <div class="bg-music">
+        <div class="music-file">
+          <audio class="music-audio">
+            您的浏览器不支持<code>audio</code>元素
+            <source src="./audios/starwar30.mp3" type="audio/mp3">
+            <source src="./audios/starwar30ogg.ogg" type="audio/ogg">
+          </audio>
+        </div>
+        <div class="iconfont music-sign">&#xe704;</div>
+        <div class="music-controls">
+          <span class="iconfont music-stop">&#xe668;</span>
+          <span class="iconfont music-play">&#xe65c;</span>
+        </div>
+      </div>        
+    </div>
+  </section>
+  <script src="./js/index.js"></script>
+</body>
+</html>

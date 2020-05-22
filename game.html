@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+  <title>H5移动端小游戏之打怪</title>
+  <script>
+    // ------------------------------设定基准rem-------------------------------------------
+    (function() {
+      var screen_width = window.screen.width;
+      var font_size = (screen_width / 640) * 100;
+      document.documentElement.style.fontSize = font_size + 'px'; // 1rem的大小;
+      window.addEventListener('resize', function() {
+        var screen_width = window.screen.width;
+        var font_size = (screen_width / 640) * 100;
+        document.documentElement.style.fontSize = font_size + 'px'; // 1rem的大小;
+      })
+    })();
+    // ------------------------------ 阻止默认行为 ------------------------------
+    (function() {
+      var lastTouch = 0;
+      document.addEventListener('touchstart', { passive: false }, function(e) {
+        e.preventDefault();
+      }, false);
+      // document.addEventListener('touchstart', function(e) {
+      //   if(e.touches.length > 1) {
+      //     e.preventDefault();
+      //   }
+      // });
+      document.addEventListener('touchend', { passive: false }, function(e) {
+        var now = new Date().getTime();
+        if(now - lastTouch <= 300) {
+          e.preventDefault();
+        }
+        lastTouch = now;
+      }, false);
+      document.addEventListener('gesturestart', { passive: false }, function(e) {
+        e.preventDefault();
+      }, false)
+      document.addEventListener('dbclick', { passive: false }, function(e) {
+        e.preventDefault();
+      }, false)
+    })();
+  </script>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/game.css">
+  <script src="./fonts/iconfont.js"></script>
+</head>
+<body>
+  <div class="game-page-play">
+    <div class="game-rules">
+      <div class="rule-board">
+        <div class="monsters">
+          <span class="iconfont monster">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-guaishou"></use>
+            </svg>
+          </span>
+          <span class="iconfont monster">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-mankey"></use>
+            </svg>
+          </span>
+          <span class="iconfont monster">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon--devil"></use>
+            </svg>
+          </span>
+        </div>
+        <div class="rule-text">
+          <h3 class="rule-header">-游戏规则-</h3>
+          <p class="rule-content">当小怪物飞出来后，翘起你的手指，瞄准后按死小怪兽们！一定要按准噢~</p>
+        </div>
+        <button class="game-begin">开始游戏</button>
+      </div>
+    </div>
+    <div class="game-field">
+      <!-- <canvas class="interactive-field" id="interactive-field"></canvas> -->
+    </div>
+    <div class="tips-board">
+      <div class="tips-monster-sum">
+        <span class="iconfont tips-monster-sign">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-xiaoguaishou"></use>
+          </svg>
+        </span>
+        × <span class="tips-monster-number">0</span>
+      </div>
+      <div class="tips-timer">
+        <span class="iconfont tips-timer-sign">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-naozhong"></use>
+          </svg>
+        </span>
+        <span class="tips-timer-count">10 秒</span>
+      </div>
+      <div class="bg-music">
+        <div class="music-file">
+          <audio class="music-audio">
+            您的浏览器不支持<code>audio</code>元素
+            <source src="./audios/starwar30.mp3" type="audio/mp3">
+            <source src="./audios/starwar30ogg.ogg" type="audio/ogg">
+          </audio>
+        </div>
+        <div class="iconfont music-sign">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-music"></use>
+          </svg>
+        </div>
+        <div class="music-controls">
+          <span class="iconfont music-stop">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-zanting"></use>
+            </svg>
+          </span>
+          <span class="iconfont music-play">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-bofang"></use>
+            </svg>
+          </span>
+        </div>
+      </div>        
+    </div>
+  </div>
+  <script src="./js/game.js"></script>
+</body>
+</html>

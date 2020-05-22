@@ -1,0 +1,203 @@
+html, body {
+  font-family: Helvetica;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  background: url('../imgs/index.jpeg');
+  color: rgb(237, 236, 236);
+}
+/* ----------------------------- svg图标所需的样式代码 ----------------------------- */
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+/* ----------------------------- 容器样式代码 ----------------------------- */
+.game-page-play {
+  width: 100vw;
+  height: 100%;
+  font-size: 0.3rem;
+  position: absolute;
+  top: 0; left: 0;
+}
+.game-shake {
+  background: rgb(255, 77, 0, .3);
+  animation: shake 0.2s ease-in-out infinite;
+}
+@keyframes shake {
+  0%, 100% {
+    transform: translate(-1.2vw, -0.5vh);
+  }
+  20% {
+    transform: translate(0px, 0px);
+  }
+  40% {
+    transform: translate(-1.2vw, -0.5vh);
+  }
+  60% {
+    transform: translate(0px, 0px);
+  }
+  80% {
+    transform: translate(-1.2vw, -0.5vh);
+  }
+}
+/* ----------------------------- 游戏场地样式代码 ----------------------------- */
+.game-field {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 0;
+}
+.game-field-monster {
+  width: 1.2rem;
+  height: 1.2rem;
+  position: absolute;
+  top: 0; left: 0;
+  font-size: 1.2rem;
+}
+/* ----------------------------- 游戏规则布告栏 ---------------------------------*/
+.game-rules {
+  width: 60vw;
+  height: 30vh;
+  position: absolute;
+  top: 35vh; left: 20vw;
+  background-image: linear-gradient(135deg,rgb(255, 77, 0) 25%, rgb(1, 1, 89) 0, rgb(1, 1, 89) 50%, rgb(255, 77, 0) 0, rgb(255, 77, 0) 75%, rgb(1, 1, 89) 0);
+  background-size: 10px 10px;
+  border-radius: 12px;
+  transition: opacity 0.5s ease-out;
+  -webkit-transition: opacity 0.5s ease-out;
+  z-index: 1;
+}
+.game-rules-hide {
+  opacity: 0;
+}
+.rule-board {
+  width: 56vw;
+  height: 28vh;
+  position: absolute;
+  top: 1vh; left: 2vw;
+  background: rgb(255, 77, 0);
+}
+.monsters {
+  position: absolute;
+  width: 50vw;
+  height: 10vh;
+  top: -5vh; left: 3vw;
+  text-align: center;
+}
+.monster {
+  font-size: 0.8rem;
+}
+/* .monster:nth-of-type(1) {
+  color: greenyellow;
+}
+.monster:nth-of-type(2) {
+  color: rgb(255, 162, 0);
+}
+.monster:nth-of-type(3) {
+  color: rgb(47, 224, 255);
+} */
+.rule-text {
+  padding: 3vh;
+  font-size: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.rule-header {
+  font-size: 0.4rem;
+  text-align: center;
+  margin: 1vh 0 0.5vh 0; 
+}
+.rule-content {
+  margin: 0.5vh 0;
+}
+.game-begin {
+  display: block;
+  width: 30vw;
+  height: 5vh;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 2vh; left: 13vw;
+  color: rgb(255, 77, 0);
+  border: 1px solid black;
+  border-radius: 0.15rem;
+  margin: 0 auto;
+  box-shadow: 2px 2px 2px 1px rgb(142, 44, 2, 0.8);
+  background: white;
+}
+.game-begin:active {
+  box-shadow: inset 1px 1px 1px 1px rgb(142, 44, 2, 0.8);
+}
+/* ----------------------------- 游戏信息统计栏 ---------------------------------*/
+.tips-board {
+  width: 100%;
+  height: 10vh;
+  box-sizing: border-box;
+  padding: 2vw;
+  position: absolute;
+  bottom: 0; left: 0;
+  background: rgb(1, 2, 34);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.tips-monster-sum {
+  color: rgb(242, 141, 53);
+}
+.tips-monster-sign, .tips-timer-sign {
+  font-size: 0.8rem;
+  vertical-align: middle;
+}
+.tips-monster-number, .tips-timer-count {
+  font-size: 0.35rem;
+  vertical-align: middle;
+}
+.tips-timer {
+  color: rgb(233, 242, 53);
+}
+/* ----------------- 背景音乐样式 ------------------------------ */
+.bg-music {
+  color: silver;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.bg-music-rotate {
+  animation: music-rotate 5s linear infinite forwards;
+}
+.music-file {
+  opacity: 0;
+  z-index: -1;
+}
+.music-sign {
+  font-size: 0.6rem;
+  position: relative;
+  left: 2vw;
+  top: -1vw;
+}
+.music-controls {
+  position: relative;
+  left: -2vw;
+  color: rgb(255, 77, 0);
+}
+.music-stop {
+  font-size: 0.35rem;
+}
+.music-play {
+  display: none;
+  font-size: 0.35rem;
+}
+@keyframes music-rotate {
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

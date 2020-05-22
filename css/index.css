@@ -1,0 +1,195 @@
+@charset "utf-8";
+
+html, body {
+  font-family: Helvetica;
+  height: 100%;
+  overflow: hidden;
+}
+section {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+/* ------------------------------ 首页样式 ------------------------------ */
+.game-page-index {
+  width: 100%;
+  height: 100%;
+  background: url('../imgs/index.jpeg');
+  background-size: cover;
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+.game-bg {
+  color: rgb(201, 201, 3);
+  font-size: 0.35rem;
+  padding: 0.4rem;
+  opacity: 0;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.game-bg-show {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+.game-bg-title {
+  font-size: 0.7rem;
+  text-align: center;
+}
+.game-bg-intro {
+  text-align: left;
+  line-height: 0.7rem;
+}
+
+.leave-from-screen {
+  animation: leave 4s linear forwards;
+}
+
+@keyframes leave {
+  0% {
+    transform: translateZ(0px) rotateX(0deg) ;
+  }
+  10% {
+    transform: translateZ(400px) rotateX(0deg) ;
+  }
+  20% {
+    transform: translateZ(400px) rotateX(80deg);
+  }
+  60% {
+    transform: translateZ(0px) rotateX(80deg);
+  }
+  100% {
+    transform: translateZ(-800px) rotateX(80deg);
+  }
+}
+/* ----------------- 向上滑动箭头样式 ------------------------------ */
+.slide-up-arrow {
+  width: 60vw;
+  height: 30vh;
+  position: absolute;
+  bottom: -5vh;
+  left: 50%;
+  margin-left: -30vw;
+  color: silver;
+  font-size: 0.6rem;
+  text-align: center;
+  line-height: 30vh;
+  animation: indicator 1.5s ease-out infinite forwards;
+}
+@keyframes indicator {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-5vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-5vh);
+    opacity: 0;
+  }
+}
+/* ----------------- 背景音乐样式 ------------------------------ */
+.bg-music {
+  position: absolute;
+  bottom: 0rem;
+  right: 0rem;
+  width: 1rem;
+  height: 1rem;
+  color: silver;
+  z-index: 2;
+}
+.bg-music-rotate {
+  animation: music-rotate 5s linear infinite forwards;
+}
+.music-file {
+  position: absolute;
+  height: 1rem;
+  width: 0.6rem;
+  opacity: 0;
+  z-index: -1;
+  bottom: 0;
+  right: 0.25rem;
+}
+.music-sign {
+  height: 1rem;
+  width: 0.6rem;
+  text-align: right;
+  line-height: 1rem;
+  font-size: 0.6rem;
+  position: absolute;
+  bottom: 0;
+  right: 0.25rem;
+}
+.music-controls {
+  height: 1rem;
+  width: 0.4rem;
+  text-align: left;
+  line-height: 1rem;
+  position: absolute;
+  bottom: 0;
+  right: 0.1rem;
+}
+.music-stop {
+  font-size: 0.35rem;
+  vertical-align: middle;
+}
+.music-play {
+  display: none;
+  font-size: 0.35rem;
+  vertical-align: middle;
+}
+@keyframes music-rotate {
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* --------------------------- 开始游戏界面样式 --------------------------- */
+.game-start {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgb(201, 201, 3);
+  font-size: 0.5rem;
+  text-align: center;
+}
+.game-start-show {
+  opacity: 1;
+  transition: opacity 1s 3s ease-in;
+}
+.game-start-bg {
+  width: 70vw;
+  height: 40vh;
+  background: url('../imgs/start-game.jpg');
+  background-size: cover;
+  margin: 1rem auto;
+}
+.game-start-btn {
+  width: 40vw;
+  height: 8vh; 
+  margin: 0 auto;
+  border: 2px solid rgb(1, 1, 77);
+  border-radius: 0.3rem;
+  line-height: 8vh;
+  background: rgb(225, 106, 2);
+  font-size: 0.4rem;
+  box-shadow: 0 2px 1px silver inset;
+}
+.game-start-text em {
+  font-style: normal;
+  font-weight: 700;
+}
+.game-start-btn-press {
+  box-shadow: 0 2px 1px rgb(1, 1, 77) inset;
+}
